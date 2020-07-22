@@ -236,7 +236,7 @@ add script
 <div class="page"><div class="slide"><div class="slide-nr">17</div>
 <code>
 <span class="macro">@def(<span class="name">on load</span>)</span><br/>
-<span class="in1"></span><span class="type">let</span> <span class="var">$body</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$body</span> =<br/>
 <span class="in2"></span><span class="var">document</span>.<span class="fn">getElementsByTagName</span>(<br/>
 <span class="in3"></span><span class="str">'BODY'</span><br/>
 <span class="in2"></span>)[<span class="num">0</span>];<br/>
@@ -285,6 +285,76 @@ register keyup action on body
 </code></div>
 <ul><li>
 remove class when control key is lifted
+</li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">21</div>
+<code>
+<span class="macro">@add(<span class="name">on load</span>)</span><br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">actions</span> = [{<br/>
+<span class="in2"></span><span class="var">ctrlKey</span>: <span class="num">true</span>,<br/>
+<span class="in2"></span><span class="var">key</span>: <span class="str">"Enter"</span>,<br/>
+<span class="in2"></span><span class="var">action</span>: <span class="var">evt</span> =&gt; {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">open commandlet</span>)</span><br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}];<br/>
+<span class="macro">@end(<span class="name">on load</span>)</span><br/>
+</code></div>
+<ul><li>
+list with global actions
+</li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">22</div>
+<code>
+<span class="macro">@def(<span class="name">open commandlet</span>)</span><br/>
+<span class="in1"></span><span class="fn">alert</span>(<span class="str">"open commandlet"</span>);<br/>
+<span class="macro">@end(<span class="name">open commandlet</span>)</span><br/>
+</code></div>
+<ul><li>
+dummy implementation
+</li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">23</div>
+<code>
+<span class="macro">@add(<span class="name">on load</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">find_action</span> = <span class="var">evt</span> =&gt; {<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="var">a</span> <span class="var">of</span> <span class="var">actions</span>) {<br/>
+<span class="in3"></span><span class="keyword">if</span> (<span class="var">a</span>.<span class="var">ctrlKey</span> == <span class="var">evt</span>.<span class="var">ctrlKey</span><br/>
+<span class="in4"></span>&amp;&amp; <span class="var">a</span>.<span class="var">key</span> == <span class="var">evt</span>.<span class="var">key</span><br/>
+<span class="in3"></span>) {<br/>
+<span class="in4"></span><span class="keyword">return</span> <span class="var">a</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">on load</span>)</span><br/>
+</code></div>
+<ul><li>
+return action with matching key and modifiers
+</li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">24</div>
+<code>
+<span class="macro">@add(<span class="name">on key down</span>)</span><br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="fn">find_action</span>(<span class="var">evt</span>)) {<br/>
+<span class="in2"></span><span class="var">evt</span>.<span class="fn">preventDefault</span>();<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">on key down</span>)</span><br/>
+</code></div>
+<ul><li>
+prevent default handling of keyboard shortcuts
+</li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">25</div>
+<code>
+<span class="macro">@add(<span class="name">on key up</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">a</span> = <span class="fn">find_action</span>(<span class="var">evt</span>);<br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">a</span>) {<br/>
+<span class="in2"></span><span class="var">evt</span>.<span class="fn">preventDefault</span>();<br/>
+<span class="in2"></span><span class="var">a</span>.<span class="fn">action</span>(<span class="var">evt</span>);<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">on key up</span>)</span><br/>
+</code></div>
+<ul><li>
+process keyboard shortcut
 </li></ul>
 </div>
 </body>

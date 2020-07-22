@@ -176,7 +176,7 @@
 
 ```
 @def(on load)
-	let $body =
+	const $body =
 		document.getElementsByTagName(
 			'BODY'
 		)[0];
@@ -215,4 +215,59 @@
 @end(on key up)
 ```
 * remove class when control key is lifted
+
+```
+@add(on load)
+	let actions = [{
+		ctrlKey: true,
+		key: "Enter",
+		action: evt => {
+			@put(open commandlet)
+		}
+	}];
+@end(on load)
+```
+* list with global actions
+
+```
+@def(open commandlet)
+	alert("open commandlet");
+@end(open commandlet)
+```
+* dummy implementation
+
+```
+@add(on load)
+	const find_action = evt => {
+		for (const a of actions) {
+			if (a.ctrlKey == evt.ctrlKey
+				&& a.key == evt.key
+			) {
+				return a;
+			}
+		}
+	};
+@end(on load)
+```
+* return action with matching key and modifiers
+
+```
+@add(on key down)
+	if (find_action(evt)) {
+		evt.preventDefault();
+	}
+@end(on key down)
+```
+* prevent default handling of keyboard shortcuts
+
+```
+@add(on key up)
+	const a = find_action(evt);
+	if (a) {
+		evt.preventDefault();
+		a.action(evt);
+	}
+@end(on key up)
+```
+* process keyboard shortcut
 
