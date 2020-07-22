@@ -1,13 +1,16 @@
 
+	
 	body {
 		background-color: #336;
 		color: #ddf;
 	}
+
 	.window {
 		margin: 20px;
 		border: solid 1px #ddf;
 		display: inline-block;
 	}
+
 	.window h1 {
 		margin: 0;
 		padding: 2px 6px;
@@ -18,5 +21,30 @@
 	}
 	.window .content {
 		margin: 8px;
+	}
+
+	li span {
+		position: relative;
+	}
+	.with-ctrl {
+		display: none;
+	}
+	.ctrl .with-ctrl {
+		
+	position: absolute;
+	display: block;
+	white-space: nowrap;
+	z-index: 5;
+	left: 50%;
+	top: 50%;
+
+	background-color:
+		rgba(80, 80, 0, 0.8);
+	color: #ff0;
+	border: solid 1px #ff0;
+	font-size: smaller;
+	padding: 0 4px;
+	border-radius: 4px;
+
 	}
 

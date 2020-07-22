@@ -1,4 +1,5 @@
 # Browser-based Operating System
+* run all the programs you need in a single browser window
 
 ```
 @Def(file: build/index.html)
@@ -14,6 +15,7 @@
 	</html>
 @End(file: build/index.html)
 ```
+* structure of a HTML 5 page
 
 ```
 @def(head)
@@ -22,37 +24,73 @@
 	<meta charset="utf-8" />
 @end(head)
 ```
+* title and encoding
 
 ```
 @def(body)
 	<div class="window">
-		<h1>Startup Message</h1>
-		<div class="content">
-			<div class="note"><p>Welcome
-				to the browser-based
-				Operating
-			System.</p><p>Press control
-				to trigger one of the
-				following
-			actions:</p><ul>
-				<li>Open Commandlet</li>
-			</ul></div>
-		</div>
+		@put(startup message)
 	</div>
 @end(body)
 ```
+* start with one single window
+
+```
+@def(startup message)
+	<h1>Startup Message</h1>
+	<div class="content">
+		<div class="note"><p>Welcome to
+			the browser-based Operating
+		System.</p><p>Press control
+			to trigger one of the
+			following
+		actions:</p><ul>
+			@put(startup actions)
+		</ul></div>
+	</div>
+@end(startup message)
+```
+* title and simple text content
+
+```
+@def(startup actions)
+	<li><span><div class="with-ctrl">
+		ctrl+return
+	</div>Open Commandlet</span></li>
+@end(startup actions)
+```
+* most important action
 
 ```
 @Def(file: build/bbo.css)
+	@put(styles)
+@End(file: build/bbo.css)
+```
+* file with style definitions
+
+```
+@def(styles)
 	body {
 		background-color: #336;
 		color: #ddf;
 	}
+@end(styles)
+```
+* style desktop
+
+```
+@add(styles)
 	.window {
 		margin: 20px;
 		border: solid 1px #ddf;
 		display: inline-block;
 	}
+@end(styles)
+```
+* windows have a solid border
+
+```
+@add(styles)
 	.window h1 {
 		margin: 0;
 		padding: 2px 6px;
@@ -64,9 +102,49 @@
 	.window .content {
 		margin: 8px;
 	}
-
-@End(file: build/bbo.css)
+@end(styles)
 ```
+* title bar and content
+
+```
+@add(styles)
+	li span {
+		position: relative;
+	}
+	.with-ctrl {
+		display: none;
+	}
+	.ctrl .with-ctrl {
+		@put(tooltip)
+	}
+@end(styles)
+```
+* allow tooltips to be positioned over controls
+
+```
+@def(tooltip)
+	position: absolute;
+	display: block;
+	white-space: nowrap;
+	z-index: 5;
+	left: 50%;
+	top: 50%;
+@end(tooltip)
+```
+* position tooltip
+
+```
+@add(tooltip)
+	background-color:
+		rgba(80, 80, 0, 0.8);
+	color: #ff0;
+	border: solid 1px #ff0;
+	font-size: smaller;
+	padding: 0 4px;
+	border-radius: 4px;
+@end(tooltip)
+```
+* style tooltip
 
 ```
 @add(head)
@@ -75,6 +153,7 @@
 		href="bbo.css" />
 @end(head)
 ```
+* use stylesheet
 
 ```
 @Def(file: build/bbo.js)
@@ -86,12 +165,14 @@
 	);
 @End(file: build/bbo.js)
 ```
+* action after page loading
 
 ```
 @def(after body)
 	<script src="bbo.js"></script>
 @end(after body)
 ```
+* add script
 
 ```
 @def(on load)
@@ -106,6 +187,7 @@
 	);
 @end(on load)
 ```
+* register keydown action on body
 
 ```
 @def(on key down)
@@ -114,6 +196,7 @@
 	}
 @end(on key down)
 ```
+* add class when control key is pressed
 
 ```
 @add(on load)
@@ -124,8 +207,12 @@
 	);
 @end(on load)
 ```
+* register keyup action on body
 
 ```
 @def(on key up)
 	$body.classList.remove('ctrl');
 @end(on key up)
+```
+* remove class when control key is lifted
+
