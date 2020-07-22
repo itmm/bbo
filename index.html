@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Browser-based Operating System</title>
+<link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<body>
+<h1>Browser-based Operating System</h1>
+<div class="slides">
+<div class="page">
+<div class="slide slide-header"><div class="slide-nr">1</div><div class="headers">
+<h1>Browser-based Operating System</h1>
+</div></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">2</div>
+<code>
+<span class="macro">@Def(<span class="name">file: build/index.html</span>)</span><br/>
+<span class="in1"></span>&lt;!<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">html</span> <span class="var">lang</span>=<span class="str">"end"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">head</span>&gt;<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">head</span>)</span><br/>
+<span class="in2"></span>&lt;/<span class="var">head</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">body</span>&gt;<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">body</span>)</span><br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">after body</span>)</span><br/>
+<span class="in2"></span>&lt;/<span class="var">body</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">html</span>&gt;<br/>
+<span class="macro">@End(<span class="name">file: build/index.html</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">3</div>
+<code>
+<span class="macro">@def(<span class="name">head</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">title</span>&gt;<span class="type">Browser</span>-<span class="var">based</span><br/>
+<span class="in2"></span><span class="type">Operating</span> <span class="type">System</span>&lt;/<span class="var">title</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">meta</span> <span class="var">charset</span>=<span class="str">"utf-8"</span> /&gt;<br/>
+<span class="macro">@end(<span class="name">head</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">4</div>
+<code>
+<span class="macro">@def(<span class="name">body</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"window"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">h1</span>&gt;<span class="type">Startup</span> <span class="type">Message</span>&lt;/<span class="var">h1</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"content"</span>&gt;<br/>
+<span class="in3"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"note"</span>&gt;&lt;<span class="var">p</span>&gt;<span class="type">Welcome</span><br/>
+<span class="in4"></span><span class="var">to</span> <span class="var">the</span> <span class="var">browser</span>-<span class="var">based</span><br/>
+<span class="in4"></span><span class="type">Operating</span><br/>
+<span class="in3"></span><span class="type">System</span>.&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<span class="type">Press</span> <span class="var">escape</span><br/>
+<span class="in4"></span><span class="var">to</span> <span class="var">open</span> <span class="var">the</span><br/>
+<span class="in3"></span><span class="var">commandlet</span>.&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">body</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">5</div>
+<code>
+<span class="macro">@Def(<span class="name">file: build/bbo.css</span>)</span><br/>
+<span class="in1"></span><span class="var">body</span> {<br/>
+<span class="in2"></span><span class="var">background</span>-<span class="var">color</span>: <span class="keyword">#336</span>;<br/>
+<span class="in2"></span><span class="var">color</span>: <span class="keyword">#ddf</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span>.<span class="var">window</span> {<br/>
+<span class="in2"></span><span class="var">margin</span>: <span class="num">20px</span>;<br/>
+<span class="in2"></span><span class="var">border</span>: <span class="var">solid</span> <span class="num">1px</span> <span class="keyword">#ddf</span>;<br/>
+<span class="in2"></span><span class="var">display</span>: <span class="keyword">inline</span>-<span class="var">block</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span>.<span class="var">window</span> <span class="var">h1</span> {<br/>
+<span class="in2"></span><span class="var">margin</span>: <span class="num">0</span>;<br/>
+<span class="in2"></span><span class="var">padding</span>: <span class="num">2px</span> <span class="num">6px</span>;<br/>
+<span class="in2"></span><span class="var">display</span>: <span class="var">block</span>;<br/>
+<span class="in2"></span><span class="var">background</span>-<span class="var">color</span>: <span class="keyword">#ddf</span>;<br/>
+<span class="in2"></span><span class="var">color</span>: <span class="keyword">#000</span>;<br/>
+<span class="in2"></span><span class="var">font</span>-<span class="var">size</span>: <span class="var">medium</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span>.<span class="var">window</span> .<span class="var">content</span> {<br/>
+<span class="in2"></span><span class="var">margin</span>: <span class="num">8px</span>;<br/>
+<span class="in1"></span>}<br/>
+<br/>
+<span class="macro">@End(<span class="name">file: build/bbo.css</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">6</div>
+<code>
+<span class="macro">@add(<span class="name">head</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">link</span> <span class="var">rel</span>=<span class="str">"stylesheet"</span><br/>
+<span class="in2"></span><span class="var">type</span>=<span class="str">"text/css"</span><br/>
+<span class="in2"></span><span class="var">href</span>=<span class="str">"bbo.css"</span> /&gt;<br/>
+<span class="macro">@end(<span class="name">head</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">7</div>
+<code>
+<span class="macro">@Def(<span class="name">file: build/bbo.js</span>)</span><br/>
+<span class="in1"></span><span class="str">'use strict'</span>;<br/>
+<span class="in1"></span><span class="var">window</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in2"></span><span class="str">'load'</span>, <span class="var">evt</span> =&gt; {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">on load</span>)</span><br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>);<br/>
+<span class="macro">@End(<span class="name">file: build/bbo.js</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">8</div>
+<code>
+<span class="macro">@def(<span class="name">after body</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">script</span> <span class="var">src</span>=<span class="str">"bbo.js"</span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
+<span class="macro">@end(<span class="name">after body</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">9</div>
+<code>
+<span class="macro">@def(<span class="name">on load</span>)</span><br/>
+<span class="macro">@end(<span class="name">on load</span>)</span><br/>
+</code></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+
+	body {
+		background-color: #336;
+		color: #ddf;
+	}
+	.window {
+		margin: 20px;
+		border: solid 1px #ddf;
+		display: inline-block;
+	}
+	.window h1 {
+		margin: 0;
+		padding: 2px 6px;
+		display: block;
+		background-color: #ddf;
+		color: #000;
+		font-size: medium;
+	}
+	.window .content {
+		margin: 8px;
+	}
+
