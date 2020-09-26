@@ -81,9 +81,9 @@ title and simple text content
 <div class="page"><div class="slide"><div class="slide-nr">6</div>
 <code>
 <span class="macro">@def(<span class="name">startup actions</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">li</span>&gt;&lt;<span class="var">span</span>&gt;&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"with-ctrl"</span>&gt;<br/>
-<span class="in2"></span><span class="var">ctrl</span>+<span class="keyword">return</span><br/>
-<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<span class="type">Open</span> <span class="type">Commandlet</span>&lt;/<span class="var">span</span>&gt;&lt;/<span class="var">li</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">li</span>&gt;&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"#"</span> <span class="var">onclick</span>=<span class="str">"fns.open_commandlet()"</span>&gt;&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"with-ctrl"</span>&gt;<br/>
+<span class="in2"></span><span class="var">ctrl</span>+<span class="type">Enter</span><br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<span class="type">Open</span> <span class="type">Commandlet</span>&lt;/<span class="var">a</span>&gt;&lt;/<span class="var">li</span>&gt;<br/>
 <span class="macro">@end(<span class="name">startup actions</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -150,9 +150,24 @@ title bar and content
 <div class="page"><div class="slide"><div class="slide-nr">11</div>
 <code>
 <span class="macro">@add(<span class="name">styles</span>)</span><br/>
-<span class="in1"></span><span class="var">li</span> <span class="var">span</span> {<br/>
+<span class="in1"></span><span class="var">a</span>, <span class="var">a</span>:<span class="var">visited</span> {<br/>
 <span class="in2"></span><span class="var">position</span>: <span class="var">relative</span>;<br/>
+<span class="in2"></span><span class="var">color</span>: <span class="keyword">#bbf</span>;<br/>
 <span class="in1"></span>}<br/>
+<span class="in1"></span><span class="var">a</span>:<span class="var">active</span> {<br/>
+<span class="in2"></span><span class="var">color</span>: <span class="keyword">#ffa</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">styles</span>)</span><br/>
+</code></div>
+<ul><li>
+color links
+</li><li>
+and allow better position of tooltips
+</li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">12</div>
+<code>
+<span class="macro">@add(<span class="name">styles</span>)</span><br/>
 <span class="in1"></span>.<span class="var">with</span>-<span class="var">ctrl</span> {<br/>
 <span class="in2"></span><span class="var">display</span>: <span class="var">none</span>;<br/>
 <span class="in1"></span>}<br/>
@@ -162,10 +177,10 @@ title bar and content
 <span class="macro">@end(<span class="name">styles</span>)</span><br/>
 </code></div>
 <ul><li>
-allow tooltips to be positioned over controls
+allow tooltips to be positioned over links
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">12</div>
+<div class="page"><div class="slide"><div class="slide-nr">13</div>
 <code>
 <span class="macro">@def(<span class="name">tooltip</span>)</span><br/>
 <span class="in1"></span><span class="var">position</span>: <span class="var">absolute</span>;<br/>
@@ -180,7 +195,7 @@ allow tooltips to be positioned over controls
 position tooltip
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">13</div>
+<div class="page"><div class="slide"><div class="slide-nr">14</div>
 <code>
 <span class="macro">@add(<span class="name">tooltip</span>)</span><br/>
 <span class="in1"></span><span class="var">background</span>-<span class="var">color</span>:<br/>
@@ -196,7 +211,7 @@ position tooltip
 style tooltip
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">14</div>
+<div class="page"><div class="slide"><div class="slide-nr">15</div>
 <code>
 <span class="macro">@add(<span class="name">head</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">link</span> <span class="var">rel</span>=<span class="str">"stylesheet"</span><br/>
@@ -208,10 +223,11 @@ style tooltip
 use stylesheet
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">15</div>
+<div class="page"><div class="slide"><div class="slide-nr">16</div>
 <code>
 <span class="macro">@Def(<span class="name">file: build/bbo.js</span>)</span><br/>
 <span class="in1"></span><span class="str">'use strict'</span>;<br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">fns</span> = {};<br/>
 <span class="in1"></span><span class="var">window</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'load'</span>, <span class="var">evt</span> =&gt; {<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">on load</span>)</span><br/>
@@ -221,9 +237,11 @@ use stylesheet
 </code></div>
 <ul><li>
 action after page loading
+</li><li>
+global variable <code><span class="var">fns</span></code> for functions used in links
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">16</div>
+<div class="page"><div class="slide"><div class="slide-nr">17</div>
 <code>
 <span class="macro">@def(<span class="name">after body</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">script</span> <span class="var">src</span>=<span class="str">"bbo.js"</span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
@@ -233,7 +251,7 @@ action after page loading
 add script
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">17</div>
+<div class="page"><div class="slide"><div class="slide-nr">18</div>
 <code>
 <span class="macro">@def(<span class="name">on load</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$body</span> =<br/>
@@ -251,7 +269,7 @@ add script
 register keydown action on body
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">18</div>
+<div class="page"><div class="slide"><div class="slide-nr">19</div>
 <code>
 <span class="macro">@def(<span class="name">on key down</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">evt</span>.<span class="var">ctrlKey</span>) {<br/>
@@ -263,7 +281,7 @@ register keydown action on body
 add class when control key is pressed
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">19</div>
+<div class="page"><div class="slide"><div class="slide-nr">20</div>
 <code>
 <span class="macro">@add(<span class="name">on load</span>)</span><br/>
 <span class="in1"></span><span class="var">$body</span>.<span class="fn">addEventListener</span>(<br/>
@@ -277,7 +295,7 @@ add class when control key is pressed
 register keyup action on body
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">20</div>
+<div class="page"><div class="slide"><div class="slide-nr">21</div>
 <code>
 <span class="macro">@def(<span class="name">on key up</span>)</span><br/>
 <span class="in1"></span><span class="var">$body</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'ctrl'</span>);<br/>
@@ -287,15 +305,16 @@ register keyup action on body
 remove class when control key is lifted
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">21</div>
+<div class="page"><div class="slide"><div class="slide-nr">22</div>
 <code>
 <span class="macro">@add(<span class="name">on load</span>)</span><br/>
+<span class="in1"></span><span class="var">fns</span>.<span class="var">open_commandlet</span> = <span class="var">evt</span> =&gt; {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">open commandlet</span>)</span><br/>
+<span class="in1"></span>};<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">actions</span> = [{<br/>
 <span class="in2"></span><span class="var">ctrlKey</span>: <span class="num">true</span>,<br/>
-<span class="in2"></span><span class="var">key</span>: <span class="str">"Enter"</span>,<br/>
-<span class="in2"></span><span class="var">action</span>: <span class="var">evt</span> =&gt; {<br/>
-<span class="in3"></span><span class="macro">@put(<span class="name">open commandlet</span>)</span><br/>
-<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="var">key</span>: <span class="str">"xEnter"</span>,<br/>
+<span class="in2"></span><span class="var">action</span>: <span class="var">fns</span>.<span class="var">open_commandlet</span><br/>
 <span class="in1"></span>}];<br/>
 <span class="macro">@end(<span class="name">on load</span>)</span><br/>
 </code></div>
@@ -303,7 +322,7 @@ remove class when control key is lifted
 list with global actions
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">22</div>
+<div class="page"><div class="slide"><div class="slide-nr">23</div>
 <code>
 <span class="macro">@def(<span class="name">open commandlet</span>)</span><br/>
 <span class="in1"></span><span class="fn">alert</span>(<span class="str">"open commandlet"</span>);<br/>
@@ -313,7 +332,7 @@ list with global actions
 dummy implementation
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">23</div>
+<div class="page"><div class="slide"><div class="slide-nr">24</div>
 <code>
 <span class="macro">@add(<span class="name">on load</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">find_action</span> = <span class="var">evt</span> =&gt; {<br/>
@@ -331,7 +350,7 @@ dummy implementation
 return action with matching key and modifiers
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">24</div>
+<div class="page"><div class="slide"><div class="slide-nr">25</div>
 <code>
 <span class="macro">@add(<span class="name">on key down</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="fn">find_action</span>(<span class="var">evt</span>)) {<br/>
@@ -343,13 +362,24 @@ return action with matching key and modifiers
 prevent default handling of keyboard shortcuts
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">25</div>
+<div class="page"><div class="slide"><div class="slide-nr">26</div>
 <code>
 <span class="macro">@add(<span class="name">on key up</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">a</span> = <span class="fn">find_action</span>(<span class="var">evt</span>);<br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">a</span>) {<br/>
 <span class="in2"></span><span class="var">evt</span>.<span class="fn">preventDefault</span>();<br/>
 <span class="in2"></span><span class="var">a</span>.<span class="fn">action</span>(<span class="var">evt</span>);<br/>
+<span class="in1"></span>} <span class="keyword">else</span> <span class="keyword">if</span> (<span class="var">evt</span>.<span class="var">ctrlKey</span>) {<br/>
+<span class="in2"></span><span class="type">const</span> <span class="var">$tips</span> = <span class="var">document</span>.<span class="fn">getElementsByClassName</span>(<span class="str">'with-ctrl'</span>);<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">$tips</span>.<span class="var">length</span>; ++<span class="var">i</span>) {<br/>
+<span class="in3"></span><span class="type">const</span> <span class="var">$tip</span> = <span class="var">$tips</span>[<span class="var">i</span>];<br/>
+<span class="in3"></span><span class="type">const</span> <span class="var">text</span> = <span class="var">$tip</span>.<span class="var">innerText</span>.<span class="fn">trim</span>();<br/>
+<span class="in3"></span><span class="var">console</span>.<span class="fn">log</span>(<span class="str">'tip: ['</span> + <span class="var">text</span> + <span class="str">']'</span>, <span class="var">$tip</span>);<br/>
+<span class="in3"></span><span class="keyword">if</span> (<span class="var">text</span> == <span class="str">'ctrl+'</span> + <span class="var">evt</span>.<span class="var">key</span>) {<br/>
+<span class="in4"></span><span class="var">evt</span>.<span class="fn">preventDefault</span>();<br/>
+<span class="in4"></span><span class="var">$tip</span>.<span class="var">parentElement</span>.<span class="fn">dispatchEvent</span>(<span class="keyword">new</span> <span class="fn">Event</span>(<span class="str">'click'</span>));<br/>
+<span class="in3"></span>}<br/>
+<span class="in2"></span>}<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">on key up</span>)</span><br/>
 </code></div>

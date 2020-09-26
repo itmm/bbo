@@ -54,9 +54,9 @@
 
 ```
 @def(startup actions)
-	<li><span><div class="with-ctrl">
-		ctrl+return
-	</div>Open Commandlet</span></li>
+	<li><a href="#" onclick="fns.open_commandlet()"><div class="with-ctrl">
+		ctrl+Enter
+	</div>Open Commandlet</a></li>
 @end(startup actions)
 ```
 * most important action
@@ -108,9 +108,20 @@
 
 ```
 @add(styles)
-	li span {
+	a, a:visited {
 		position: relative;
+		color: #bbf;
 	}
+	a:active {
+		color: #ffa;
+	}
+@end(styles)
+```
+* color links
+* and allow better position of tooltips
+
+```
+@add(styles)
 	.with-ctrl {
 		display: none;
 	}
@@ -119,7 +130,7 @@
 	}
 @end(styles)
 ```
-* allow tooltips to be positioned over controls
+* allow tooltips to be positioned over links
 
 ```
 @def(tooltip)
@@ -158,6 +169,7 @@
 ```
 @Def(file: build/bbo.js)
 	'use strict';
+	let fns = {};
 	window.addEventListener(
 		'load', evt => {
 			@put(on load)
@@ -166,6 +178,7 @@
 @End(file: build/bbo.js)
 ```
 * action after page loading
+* global variable `fns` for functions used in links
 
 ```
 @def(after body)
@@ -218,12 +231,13 @@
 
 ```
 @add(on load)
+	fns.open_commandlet = evt => {
+		@put(open commandlet)
+	};
 	let actions = [{
 		ctrlKey: true,
 		key: "Enter",
-		action: evt => {
-			@put(open commandlet)
-		}
+		action: fns.open_commandlet
 	}];
 @end(on load)
 ```
@@ -266,6 +280,17 @@
 	if (a) {
 		evt.preventDefault();
 		a.action(evt);
+	} else if (evt.ctrlKey) {
+		const $tips = document.getElementsByClassName('with-ctrl');
+		for (let i = 0; i < $tips.length; ++i) {
+			const $tip = $tips[i];
+			const text = $tip.innerText.trim();
+			console.log('tip: [' + text + ']', $tip);
+			if (text == 'ctrl+' + evt.key) {
+				evt.preventDefault();
+				$tip.parentElement.dispatchEvent(new Event('click'));
+			}
+		}
 	}
 @end(on key up)
 ```
