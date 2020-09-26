@@ -10,6 +10,9 @@
 		border: solid 1px #ddf;
 		display: inline-block;
 	}
+	.window.active {
+		border: solid 1px #f80;
+	}
 
 	.window h1 {
 		margin: 0;
@@ -19,16 +22,19 @@
 		color: #000;
 		font-size: medium;
 	}
+	.window.active h1 {
+		background-color: #f80;
+	}
 	.window .content {
 		margin: 8px;
 	}
 
 	a, a:visited {
 		position: relative;
-		color: #bbf;
+		color: #eb8;
 	}
 	a:active {
-		color: #ffa;
+		color: #f80;
 	}
 
 	.with-ctrl {
@@ -44,9 +50,9 @@
 	top: 50%;
 
 	background-color:
-		rgba(80, 80, 0, 0.8);
-	color: #ff0;
-	border: solid 1px #ff0;
+		rgba(80, 40, 0, 0.8);
+	color: #f80;
+	border: solid 1px #f80;
 	font-size: smaller;
 	padding: 0 4px;
 	border-radius: 4px;

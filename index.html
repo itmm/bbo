@@ -49,9 +49,7 @@ title and encoding
 <div class="page"><div class="slide"><div class="slide-nr">4</div>
 <code>
 <span class="macro">@def(<span class="name">body</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"window"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@put(<span class="name">startup message</span>)</span><br/>
-<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"window active"</span>&gt;<span class="macro">@put(<span class="name">startup message</span>)</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">body</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -61,18 +59,18 @@ start with one single window
 <div class="page"><div class="slide"><div class="slide-nr">5</div>
 <code>
 <span class="macro">@def(<span class="name">startup message</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">h1</span>&gt;<span class="type">Startup</span> <span class="type">Message</span>&lt;/<span class="var">h1</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"content"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"note"</span>&gt;&lt;<span class="var">p</span>&gt;<span class="type">Welcome</span> <span class="var">to</span><br/>
+<span class="in1"></span>&lt;<span class="var">h1</span>&gt;<span class="type">Startup</span> <span class="type">Message</span>&lt;/<span class="var">h1</span>&gt;&lt;<span class="var">div</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"content"</span>&gt;&lt;<span class="var">div</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"note"</span>&gt;&lt;<span class="var">p</span>&gt;<span class="type">Welcome</span> <span class="var">to</span><br/>
 <span class="in3"></span><span class="var">the</span> <span class="var">browser</span>-<span class="var">based</span> <span class="type">Operating</span><br/>
 <span class="in2"></span><span class="type">System</span>.&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<span class="type">Press</span> <span class="var">control</span><br/>
 <span class="in3"></span><span class="var">to</span> <span class="var">trigger</span> <span class="var">one</span> <span class="var">of</span> <span class="var">the</span><br/>
 <span class="in3"></span><span class="var">following</span><br/>
 <span class="in2"></span><span class="var">actions</span>:&lt;/<span class="var">p</span>&gt;&lt;<span class="var">ul</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">startup actions</span>)</span><br/>
-<span class="in2"></span>&lt;/<span class="var">ul</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
-<span class="macro">@end(<span class="name">startup message</span>)</span><br/>
+<span class="in2"></span>&lt;/<span class="var">ul</span>&gt;&lt;/<span class="var">div</span><br/>
+<span class="in1"></span>&gt;&lt;/<span class="var">div</span><br/>
+&gt;<span class="macro">@end(<span class="name">startup message</span>)</span><br/>
 </code></div>
 <ul><li>
 title and simple text content
@@ -83,7 +81,10 @@ title and simple text content
 <span class="macro">@def(<span class="name">startup actions</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">li</span>&gt;&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"#"</span> <span class="var">onclick</span>=<span class="str">"fns.open_commandlet()"</span>&gt;&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"with-ctrl"</span>&gt;<br/>
 <span class="in2"></span><span class="var">ctrl</span>+<span class="type">Enter</span><br/>
-<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<span class="type">Open</span> <span class="type">Commandlet</span>&lt;/<span class="var">a</span>&gt;&lt;/<span class="var">li</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<span class="var">open</span> <span class="type">Commandlet</span>&lt;/<span class="var">a</span>&gt;&lt;/<span class="var">li</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">li</span>&gt;&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"#"</span> <span class="var">onclick</span>=<span class="str">"fns.show_time()"</span>&gt;&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"with-ctrl"</span>&gt;<br/>
+<span class="in2"></span><span class="var">ctrl</span>+<span class="var">j</span><br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<span class="var">show</span> <span class="var">time</span>&lt;/<span class="var">a</span>&gt;&lt;/<span class="var">li</span>&gt;<br/>
 <span class="macro">@end(<span class="name">startup actions</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -121,6 +122,9 @@ style desktop
 <span class="in2"></span><span class="var">border</span>: <span class="var">solid</span> <span class="num">1px</span> <span class="keyword">#ddf</span>;<br/>
 <span class="in2"></span><span class="var">display</span>: <span class="keyword">inline</span>-<span class="var">block</span>;<br/>
 <span class="in1"></span>}<br/>
+<span class="in1"></span>.<span class="var">window</span>.<span class="var">active</span> {<br/>
+<span class="in2"></span><span class="var">border</span>: <span class="var">solid</span> <span class="num">1px</span> <span class="keyword">#f80</span>;<br/>
+<span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">styles</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -138,6 +142,9 @@ windows have a solid border
 <span class="in2"></span><span class="var">color</span>: <span class="keyword">#000</span>;<br/>
 <span class="in2"></span><span class="var">font</span>-<span class="var">size</span>: <span class="var">medium</span>;<br/>
 <span class="in1"></span>}<br/>
+<span class="in1"></span>.<span class="var">window</span>.<span class="var">active</span> <span class="var">h1</span> {<br/>
+<span class="in2"></span><span class="var">background</span>-<span class="var">color</span>: <span class="keyword">#f80</span>;<br/>
+<span class="in1"></span>}<br/>
 <span class="in1"></span>.<span class="var">window</span> .<span class="var">content</span> {<br/>
 <span class="in2"></span><span class="var">margin</span>: <span class="num">8px</span>;<br/>
 <span class="in1"></span>}<br/>
@@ -152,10 +159,10 @@ title bar and content
 <span class="macro">@add(<span class="name">styles</span>)</span><br/>
 <span class="in1"></span><span class="var">a</span>, <span class="var">a</span>:<span class="var">visited</span> {<br/>
 <span class="in2"></span><span class="var">position</span>: <span class="var">relative</span>;<br/>
-<span class="in2"></span><span class="var">color</span>: <span class="keyword">#bbf</span>;<br/>
+<span class="in2"></span><span class="var">color</span>: <span class="keyword">#eb8</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="in1"></span><span class="var">a</span>:<span class="var">active</span> {<br/>
-<span class="in2"></span><span class="var">color</span>: <span class="keyword">#ffa</span>;<br/>
+<span class="in2"></span><span class="var">color</span>: <span class="keyword">#f80</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">styles</span>)</span><br/>
 </code></div>
@@ -199,9 +206,9 @@ position tooltip
 <code>
 <span class="macro">@add(<span class="name">tooltip</span>)</span><br/>
 <span class="in1"></span><span class="var">background</span>-<span class="var">color</span>:<br/>
-<span class="in2"></span><span class="fn">rgba</span>(<span class="num">80</span>, <span class="num">80</span>, <span class="num">0</span>, <span class="num">0</span>.<span class="num">8</span>);<br/>
-<span class="in1"></span><span class="var">color</span>: <span class="keyword">#ff0</span>;<br/>
-<span class="in1"></span><span class="var">border</span>: <span class="var">solid</span> <span class="num">1px</span> <span class="keyword">#ff0</span>;<br/>
+<span class="in2"></span><span class="fn">rgba</span>(<span class="num">80</span>, <span class="num">40</span>, <span class="num">0</span>, <span class="num">0</span>.<span class="num">8</span>);<br/>
+<span class="in1"></span><span class="var">color</span>: <span class="keyword">#f80</span>;<br/>
+<span class="in1"></span><span class="var">border</span>: <span class="var">solid</span> <span class="num">1px</span> <span class="keyword">#f80</span>;<br/>
 <span class="in1"></span><span class="var">font</span>-<span class="var">size</span>: <span class="var">smaller</span>;<br/>
 <span class="in1"></span><span class="var">padding</span>: <span class="num">0</span> <span class="num">4px</span>;<br/>
 <span class="in1"></span><span class="var">border</span>-<span class="var">radius</span>: <span class="num">4px</span>;<br/>
@@ -313,7 +320,7 @@ remove class when control key is lifted
 <span class="in1"></span>};<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">actions</span> = [{<br/>
 <span class="in2"></span><span class="var">ctrlKey</span>: <span class="num">true</span>,<br/>
-<span class="in2"></span><span class="var">key</span>: <span class="str">"xEnter"</span>,<br/>
+<span class="in2"></span><span class="var">key</span>: <span class="str">"Enter"</span>,<br/>
 <span class="in2"></span><span class="var">action</span>: <span class="var">fns</span>.<span class="var">open_commandlet</span><br/>
 <span class="in1"></span>}];<br/>
 <span class="macro">@end(<span class="name">on load</span>)</span><br/>
@@ -335,6 +342,15 @@ dummy implementation
 <div class="page"><div class="slide"><div class="slide-nr">24</div>
 <code>
 <span class="macro">@add(<span class="name">on load</span>)</span><br/>
+<span class="in1"></span><span class="var">fns</span>.<span class="var">show_time</span> = <span class="var">evt</span> =&gt; {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">show time</span>)</span>;<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">on load</span>)</span><br/>
+</code></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">25</div>
+<code>
+<span class="macro">@add(<span class="name">on load</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">find_action</span> = <span class="var">evt</span> =&gt; {<br/>
 <span class="in2"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="var">a</span> <span class="var">of</span> <span class="var">actions</span>) {<br/>
 <span class="in3"></span><span class="keyword">if</span> (<span class="var">a</span>.<span class="var">ctrlKey</span> == <span class="var">evt</span>.<span class="var">ctrlKey</span><br/>
@@ -350,7 +366,7 @@ dummy implementation
 return action with matching key and modifiers
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">25</div>
+<div class="page"><div class="slide"><div class="slide-nr">26</div>
 <code>
 <span class="macro">@add(<span class="name">on key down</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="fn">find_action</span>(<span class="var">evt</span>)) {<br/>
@@ -362,7 +378,7 @@ return action with matching key and modifiers
 prevent default handling of keyboard shortcuts
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">26</div>
+<div class="page"><div class="slide"><div class="slide-nr">27</div>
 <code>
 <span class="macro">@add(<span class="name">on key up</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">a</span> = <span class="fn">find_action</span>(<span class="var">evt</span>);<br/>
@@ -374,7 +390,6 @@ prevent default handling of keyboard shortcuts
 <span class="in2"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">$tips</span>.<span class="var">length</span>; ++<span class="var">i</span>) {<br/>
 <span class="in3"></span><span class="type">const</span> <span class="var">$tip</span> = <span class="var">$tips</span>[<span class="var">i</span>];<br/>
 <span class="in3"></span><span class="type">const</span> <span class="var">text</span> = <span class="var">$tip</span>.<span class="var">innerText</span>.<span class="fn">trim</span>();<br/>
-<span class="in3"></span><span class="var">console</span>.<span class="fn">log</span>(<span class="str">'tip: ['</span> + <span class="var">text</span> + <span class="str">']'</span>, <span class="var">$tip</span>);<br/>
 <span class="in3"></span><span class="keyword">if</span> (<span class="var">text</span> == <span class="str">'ctrl+'</span> + <span class="var">evt</span>.<span class="var">key</span>) {<br/>
 <span class="in4"></span><span class="var">evt</span>.<span class="fn">preventDefault</span>();<br/>
 <span class="in4"></span><span class="var">$tip</span>.<span class="var">parentElement</span>.<span class="fn">dispatchEvent</span>(<span class="keyword">new</span> <span class="fn">Event</span>(<span class="str">'click'</span>));<br/>
@@ -386,6 +401,28 @@ prevent default handling of keyboard shortcuts
 <ul><li>
 process keyboard shortcut
 </li></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">28</div>
+<code>
+<span class="macro">@def(<span class="name">show time</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$wnd</span> = <span class="var">document</span>.<span class="fn">createElement</span>(<span class="str">'DIV'</span>);<br/>
+<span class="in1"></span><span class="var">$wnd</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'window'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$h1</span> = <span class="var">document</span>.<span class="fn">createElement</span>(<span class="str">'H1'</span>);<br/>
+<span class="in1"></span><span class="var">$h1</span>.<span class="var">innerText</span> = <span class="str">"Time"</span>;<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$content</span> = <span class="var">document</span>.<span class="fn">createElement</span>(<span class="str">'DIV'</span>);<br/>
+<span class="in1"></span><span class="var">$content</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'content'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$p</span> = <span class="var">document</span>.<span class="fn">createElement</span>(<span class="str">'P'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">now</span> = <span class="keyword">new</span> <span class="fn">Date</span>();<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">date</span> = <span class="var">now</span>.<span class="fn">getFullYear</span>()+<span class="str">'-'</span>+(<span class="var">now</span>.<span class="fn">getMonth</span>()+<span class="num">1</span>)+<span class="str">'-'</span>+<span class="var">now</span>.<span class="fn">getDate</span>();<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">time</span> = <span class="var">now</span>.<span class="fn">getHours</span>() + <span class="str">":"</span> + <span class="var">now</span>.<span class="fn">getMinutes</span>() + <span class="str">":"</span> + <span class="var">now</span>.<span class="fn">getSeconds</span>();<br/>
+<span class="in1"></span><span class="var">var</span> <span class="var">dateTime</span> = <span class="var">date</span>+<span class="str">' '</span>+<span class="var">time</span>;<br/>
+<span class="in1"></span><span class="var">$p</span>.<span class="var">innerText</span> = <span class="var">dateTime</span>;<br/>
+<span class="in1"></span><span class="var">$content</span>.<span class="fn">appendChild</span>(<span class="var">$p</span>);<br/>
+<span class="in1"></span><span class="var">$wnd</span>.<span class="fn">appendChild</span>(<span class="var">$h1</span>);<br/>
+<span class="in1"></span><span class="var">$wnd</span>.<span class="fn">appendChild</span>(<span class="var">$content</span>);<br/>
+<span class="in1"></span><span class="var">document</span>.<span class="fn">getElementsByTagName</span>(<span class="str">'BODY'</span>)[<span class="num">0</span>].<span class="fn">appendChild</span>(<span class="var">$wnd</span>);<br/>
+<span class="macro">@end(<span class="name">show time</span>)</span><br/>
+</code></div>
 </div>
 </body>
 </html>

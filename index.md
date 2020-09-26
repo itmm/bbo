@@ -28,27 +28,25 @@
 
 ```
 @def(body)
-	<div class="window">
-		@put(startup message)
-	</div>
+	<div class="window active">@put(startup message)</div>
 @end(body)
 ```
 * start with one single window
 
 ```
 @def(startup message)
-	<h1>Startup Message</h1>
-	<div class="content">
-		<div class="note"><p>Welcome to
+	<h1>Startup Message</h1><div
+		class="content"><div
+			class="note"><p>Welcome to
 			the browser-based Operating
 		System.</p><p>Press control
 			to trigger one of the
 			following
 		actions:</p><ul>
 			@put(startup actions)
-		</ul></div>
-	</div>
-@end(startup message)
+		</ul></div
+	></div
+>@end(startup message)
 ```
 * title and simple text content
 
@@ -56,7 +54,10 @@
 @def(startup actions)
 	<li><a href="#" onclick="fns.open_commandlet()"><div class="with-ctrl">
 		ctrl+Enter
-	</div>Open Commandlet</a></li>
+	</div>open Commandlet</a></li>
+	<li><a href="#" onclick="fns.show_time()"><div class="with-ctrl">
+		ctrl+j
+	</div>show time</a></li>
 @end(startup actions)
 ```
 * most important action
@@ -85,6 +86,9 @@
 		border: solid 1px #ddf;
 		display: inline-block;
 	}
+	.window.active {
+		border: solid 1px #f80;
+	}
 @end(styles)
 ```
 * windows have a solid border
@@ -99,6 +103,9 @@
 		color: #000;
 		font-size: medium;
 	}
+	.window.active h1 {
+		background-color: #f80;
+	}
 	.window .content {
 		margin: 8px;
 	}
@@ -110,10 +117,10 @@
 @add(styles)
 	a, a:visited {
 		position: relative;
-		color: #bbf;
+		color: #eb8;
 	}
 	a:active {
-		color: #ffa;
+		color: #f80;
 	}
 @end(styles)
 ```
@@ -147,9 +154,9 @@
 ```
 @add(tooltip)
 	background-color:
-		rgba(80, 80, 0, 0.8);
-	color: #ff0;
-	border: solid 1px #ff0;
+		rgba(80, 40, 0, 0.8);
+	color: #f80;
+	border: solid 1px #f80;
 	font-size: smaller;
 	padding: 0 4px;
 	border-radius: 4px;
@@ -252,6 +259,14 @@
 
 ```
 @add(on load)
+	fns.show_time = evt => {
+		@put(show time);
+	};
+@end(on load)
+```
+
+```
+@add(on load)
 	const find_action = evt => {
 		for (const a of actions) {
 			if (a.ctrlKey == evt.ctrlKey
@@ -285,7 +300,6 @@
 		for (let i = 0; i < $tips.length; ++i) {
 			const $tip = $tips[i];
 			const text = $tip.innerText.trim();
-			console.log('tip: [' + text + ']', $tip);
 			if (text == 'ctrl+' + evt.key) {
 				evt.preventDefault();
 				$tip.parentElement.dispatchEvent(new Event('click'));
@@ -296,3 +310,23 @@
 ```
 * process keyboard shortcut
 
+```
+@def(show time)
+	const $wnd = document.createElement('DIV');
+	$wnd.classList.add('window');
+	const $h1 = document.createElement('H1');
+	$h1.innerText = "Time";
+	const $content = document.createElement('DIV');
+	$content.classList.add('content');
+	const $p = document.createElement('P');
+	const now = new Date();
+	const date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+	const time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+	var dateTime = date+' '+time;
+	$p.innerText = dateTime;
+	$content.appendChild($p);
+	$wnd.appendChild($h1);
+	$wnd.appendChild($content);
+	document.getElementsByTagName('BODY')[0].appendChild($wnd);
+@end(show time)
+```
